@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth.service';
 import {User} from '../../../core/entities/user';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   userForm = this.fb.group({
@@ -25,6 +27,12 @@ export class SignupComponent implements OnInit {
   });
 
   ngOnInit() {
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
   signup() {

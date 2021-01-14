@@ -3,10 +3,8 @@
 <form [formGroup]="userForm" (ngSubmit)="signin()">
   <app-email-form-field [parentFormGroup]="userForm"></app-email-form-field>
   <app-password-form-field [parentFormGroup]="userForm"></app-password-form-field>
-  <button mat-raised-button color="accent" type="submit">Connexion</button>
+  <button mat-raised-button color="accent" type="submit" (click)="openSnackBar('Connexion en cours...')">Connexion</button>
 </form>
-
-
 
 
 

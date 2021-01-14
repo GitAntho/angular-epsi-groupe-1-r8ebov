@@ -5,6 +5,7 @@ import {AuthService} from '../../../core/services/auth.service';
 import {Observable} from 'rxjs';
 import {TagInterface} from '../../../core/interfaces/tag.interface';
 import {TagService} from '../../../core/services/tag.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private tagService: TagService
+    private tagService: TagService,
+    private snackBar: MatSnackBar
   ) {
     this.tags$ = this.tagService.get();
   }
@@ -29,6 +31,12 @@ export class ProfileComponent implements OnInit {
     tags: [[]]
   });
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+  
   ngOnInit() {
     const user = AuthService.user;
     this.firstNameControl.setValue(user.first_name);

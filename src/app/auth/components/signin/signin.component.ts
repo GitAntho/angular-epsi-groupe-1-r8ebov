@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-signin',
@@ -15,6 +16,7 @@ export class SigninComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -32,6 +34,12 @@ export class SigninComponent implements OnInit {
 
   get passwordControl() {
     return this.userForm.get('password');
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
   signin() {

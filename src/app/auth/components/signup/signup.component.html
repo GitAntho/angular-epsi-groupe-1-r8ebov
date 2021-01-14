@@ -5,5 +5,5 @@
   <app-password-form-field [parentFormGroup]="userForm"></app-password-form-field>
   <app-firstname-form-field [parentFormGroup]="userForm"></app-firstname-form-field>
   <app-lastname-form-field [parentFormGroup]="userForm"></app-lastname-form-field>
-  <button mat-raised-button color="accent" type="submit">Inscription</button>
+  <button mat-raised-button color="accent" type="submit" (click)="openSnackBar('Inscription en cours...')">Inscription</button>
 </form>
